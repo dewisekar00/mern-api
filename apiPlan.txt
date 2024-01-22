@@ -1,0 +1,59 @@
+
+
+standar api = 
+{root.api}/{version}/{grouping}/{endpoint}
+
+standar status response
+
+200 - ok --> call api success
+201 - created  --> post success
+400 - bad request --> error on client side
+401 - unauthorized --> user not authorized to request
+403 - forbidden --> user not allowed to access
+404 - not found -- req endpoint not found
+500 - internal server error --> error on server side
+502 - bad gateaway --> invalid response from another request
+
+sample:
+http://mern-api.annablog.com/v1/auth/login
+
+-menambahkan versi dan api = v1
+-Group = auth
+-endpoint = login
+
+
+Group : Authentication
+
+[1]register
+{root.api}/{version}/auth/register
+
+req: {
+    "name": "Testing"
+    "email": "test@gmail.com"
+    "pass": "123123"
+
+    res:{
+        "message": "success register"
+    }
+}
+
+
+err-response: 
+404 --> input yang dimasukan ngga valid
+
+[2]login
+{root.api}/{version}/auth/login
+
+
+Group: Blog
+
+-create post
+-get post
+-update post
+-delete 
+
+
+============================================================
+
+> yarn add express-validator
+untuk validasi jikalau user mengirim postingan yang ngga sesuai

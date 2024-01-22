@@ -1,0 +1,27 @@
+yarn start
+
+
+1.buat dulu folder 
+
+-controllers = untuk handle method dari http verb kaya kalo methodnya post dikirim res/req apa
+-models =
+-routes = isi routes/params
+
+
+2.penjelasan isi file
+-index.js = isinya listen port,route utama
+
+
+3.hubungin project ke mongodb
+-ip addres nyalain dulu 
+-buat model / table
+-connect ke mongodb di file index
+
+
+4.menambahkan npm multer: Multer is a node.js middleware for handling multipart/form-data, which is primarily used for uploading files
+-cara upload foto
+
+-set up di index.js kaya storage dan filter, middleware
+-kalo udah ke controllers, cara biar bisa request image di controllers
+-db hanya simpan link/url image 
+-file image disimpan didalam project node js/server
