@@ -56,5 +56,27 @@ BlogPost.find()
 .catch(err => {
   next(err)
 })
+  },
+
+  getBlogPostByID: (req,res,next) => {
+    const postId = req.params.postId
+  BlogPost.findById(postId)
+  .then(result => {
+if(!result) {
+  // jika user masukin id yang salah/id yang ngga ada didatabase maka dia akan tetap masuk ke then dan ditangani dengan ini
+  const error = new Error('Blog Post Tidak ditemukan')
+  error.errorStatus = 404;
+  throw error;
+}
+// kalo ada id nya masuk ke code ini
+res.status(200).json({
+  message: 'Data Blog Post Berhasil dipanggil',
+  data: result
+
+})
+  }).catch(err =>{
+    //jika error akan dihandle di depan
+    next(err)
+  })
   }
 };
