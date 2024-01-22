@@ -5,8 +5,14 @@ const router = express.Router();
 const blogController = require('../contollers/Blog');
 
 
-router.post('/post', [body('title').isLength({ min: 2 }).withMessage('minimum title input is 2 length'), 
-body('body').isLength({ min: 3 }).withMessage('minimum body input is 3 length')], blogController.createBlogPost);
+router.post('/post', 
+[body('title').
+isLength({ min: 2 })
+.withMessage('minimum title input is 2 length'), 
+body('body')
+.isLength({ min: 3 })
+.withMessage('minimum body input is 3 length')],
+ blogController.createBlogPost);
 
 module.exports = router;
 
@@ -15,6 +21,14 @@ module.exports = router;
 router.get('/posts', blogController.getAllBlogPost)
 router.get('/post/:postId', blogController.getBlogPostByID)
 
+router.put('/post/:postId', 
+[body('title')
+.isLength({ min: 2 })
+.withMessage('minimum title input is 2 length'), 
+body('body')
+.isLength({ min: 3 })
+.withMessage('minimum body input is 3 length')],
+ blogController.updateBlogPost)
 
 
 

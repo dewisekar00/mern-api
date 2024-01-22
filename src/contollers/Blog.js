@@ -16,8 +16,7 @@ module.exports = {
 
     if(!req.file){
       const err = new Error('Image should upload');
-      err.errorStatus = 400;
-      err.data = errors.array();
+      err.errorStatus = 422;
       throw err;
     }
 
@@ -78,5 +77,54 @@ res.status(200).json({
     //jika error akan dihandle di depan
     next(err)
   })
+  },
+  
+  updateBlogPost: (req,res,next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      const err = new Error('Invalid value');
+      err.errorStatus = 400;
+      err.data = errors.array();
+      throw err;
+    }
+
+
+    if(!req.file){
+      const err = new Error('Image should upload');
+      err.errorStatus = 422;
+      throw err;
+    }
+
+  const postId = req.params.postId
+  //then 1 untuk mencari data postingan 
+  BlogPost.findById(postId)
+  .then( post => {
+    if(!post){
+      const err = new Error('Blog Post Tidak ditemukan')
+      err.errorStatus = 404 ;
+      throw err;
+    }
+     // Update post properties
+    post.title = req.body.title;
+    post.image = req.file.path;
+    post.body = req.body.body;
+   // Save the updated post
+    return post.save();
+    
+  })
+
+  .then(result => {
+  res.status(200).json({
+    message: 'Update Postingan Success',
+    data: result
+  })
+  })
+  
+  .catch( err => {
+    next(err)
+  })
+
+  
   }
+
 };
