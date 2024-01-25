@@ -30,8 +30,11 @@ body('body')
 .withMessage('minimum body input is 3 length')],
  blogController.updateBlogPost)
 
+ router.delete('/post/:postId', blogController.deletBlogPostById)
 
 
+
+ 
 // alur menambahkan express validator
 /*
 1.require express-validator dan apa yang mau dikasih validasi disini contohnya adalah isi body
@@ -39,4 +42,11 @@ body('body')
 3.lalu tambahkan validatorResult di controleres
 4.tambahkan error respon middleware di index js
 
+
+
+alur kode:
+-buat route
+-buat controllers
+
 */
+
