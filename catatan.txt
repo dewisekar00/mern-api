@@ -25,3 +25,14 @@ yarn start
 -kalo udah ke controllers, cara biar bisa request image di controllers
 -db hanya simpan link/url image 
 -file image disimpan didalam project node js/server
+
+
+
+5.Menambahkan Pagination pada response API
+
+Bayangkan kita punya 1000 data dan ingin melihat semua data dari getAllPost,maka response nya akan sangat lama,maka kita bisa menggunakan pagination untuk memberikan limit pada data yang akan ditampilkan
+
+caranya:
+a.menggunakan query params(Query parameters are commonly used in URLs to provide additional data to the server)
+example: https://example.com/search?q=query&limit=10&page=1
+b.ke controllers

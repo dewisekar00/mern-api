@@ -17,7 +17,7 @@ body('body')
 module.exports = router;
 
 
-
+// memberikan pagination dengan query params
 router.get('/posts', blogController.getAllBlogPost)
 router.get('/post/:postId', blogController.getBlogPostByID)
 
